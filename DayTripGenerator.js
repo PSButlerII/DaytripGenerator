@@ -16,7 +16,7 @@ function multipleFoodSource() {
 
 
 function multipleTransport() {
-    let modeOfTransportation = ['A Car', 'A Boat', 'A Bike', 'A Moped', 'A Walk', 'A Public Transit', 'A Horse Back', 'A Horse Buggy', 'A Taxi', 'A Long Board', 'A MotorCycle'];
+    let modeOfTransportation = ['A Car', 'A Boat', 'A Bike', 'A Moped', 'Walking', 'Public Transit', 'Horse Back', 'A Horse Buggy', 'A Taxi', 'A Long Board', 'A MotorCycle'];
     let howImGettingThere = modeOfTransportation[Math.floor(Math.random() * modeOfTransportation.length)];
     return howImGettingThere;
 }
@@ -35,35 +35,56 @@ function capturefunctions() {
     let testTransportation = multipleTransport();
     let testFood = multipleFoodSource();
     let testDestination = multipleDestination();
-    console.log(`${testDestination} Is where you are headed!!`);
-    console.log(`${testFood} Is The Cuisine you will be dinning on!!`);
-    console.log(`${testTransportation} Is How you will be getting around!!`);
-    console.log(`${testEntertainment} is what you will be doing!`);
-}
-let grabTheResult = capturefunctions();
-// function usersInputStatus(str) {
-//     if (str === "no" || "NO" || "No" || "n" || "N" || "nO") {
-// console.log(grabTheResult);
-//     } else if (str === "yes" || "YEs" || "yES" || "Yes" || "Y" || "y" || "YeS" || "yEs" || "YEs" || "yeS") {
-//         let enterUserChoice = prompt("Which option would you like to change? Enter the Number 1.Destination, 2.Restuartant 3.Transportation 4.Entertainment");
-//         switch (enterUserChoice) {
-//             case 1:
-//                 let nextDestination = multipleDestination([]);
-//                 testFood = nextDestination;
-//                 break;
-//             case 2:
-//                 let newRestuartant = multipleFoodSource([]);
-//                 break;
-//             case 3:
-//                 let newTransportation = multipleTransport([]);
-//                 break;
-//             case 4:
-//                 let newEntertainment = multipleEntertainment([]);
-//                 break;
-//         }
-//     }
-//     let newDayPlan = `Your new destination is ${newDestination}`;
-// }
+    // console.log(`${testDestination} Is where you are headed!!`);
+    // console.log(`${testFood} Is The Cuisine you will be dinning on!!`);
+    // console.log(`${testTransportation} Is How you will be getting around!!`);
+    // console.log(`${testEntertainment} is what you will be doing!`);
+    let userConfirmation = prompt("Are you Satisfied with your selection? Yes or No?");
+    if (userConfirmation == "no" || "yes") {
+        let testReset = usersInputStatus(userConfirmation);
+    }
 
-// let testReset = usersInputStatus(prompt(capitalizeString("Would you like you to reselect?")));
-// console.log(testReset);
+}
+
+function myStringHolder() {}
+
+
+
+function usersInputStatus(str) {
+    switch (str) {
+        case "yes":
+            console.log("enjoy your trip!! Let us know how it goes!!".toUpperCase());
+            break;
+        case "no":
+            let enterUserChoice = prompt("Which option would you like to change? Enter the Number 1.Destination, 2.Restuartant, 3.Transportation, 4.Entertainment, 5. All");
+            switch (enterUserChoice) {
+                case "1":
+                    let newDestination = multipleDestination();
+                    console.log(`${newDestination} Is where you are headed now!!`);
+
+                    break;
+                case "2":
+                    let newRestuartant = multipleFoodSource();
+                    console.log(`${newRestuartant} Is where you are headed now!!`);
+                    break;
+                case "3":
+                    let newTransportation = multipleTransport();
+                    console.log(`${newTransportation} Is where you are headed now!!`);
+                    break;
+                case "4":
+                    let newEntertainment = multipleEntertainment();
+                    console.log(`${newEntertainment} Is where you are headed now!!`);
+                    break;
+                case "5":
+                    let newDaytrip = capturefunctions();
+                    console.log(newDaytrip);
+                    break;
+
+                default:
+
+                    break;
+            }
+    }
+
+}
+let originalList = capturefunctions([]);
